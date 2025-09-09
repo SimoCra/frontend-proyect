@@ -1,0 +1,188 @@
+/* ====== General Wrapper ====== */
+.create-product-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background: #f5f5f5;
+  padding: 2rem;
+}
+
+/* ====== Contenedor principal del form ====== */
+.create-product-container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ====== Formulario ====== */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+}
+
+.form-section h2 {
+  font-weight: 700;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+
+/* Inputs y textarea */
+.form-section input[type="text"],
+.form-section input[type="number"],
+.form-section textarea {
+  padding: 12px 16px;
+  font-size: 1.1rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background: #fff;
+  transition: border-color 0.2s ease;
+  resize: vertical;
+}
+
+.form-section input:focus,
+.form-section textarea:focus {
+  border-color: #000;
+  outline: none;
+}
+
+.form-section textarea {
+  min-height: 100px;
+}
+
+/* Toggle de stock */
+.stock-toggle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1rem;
+  justify-content: center;
+}
+
+.stock-button {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 150px;
+}
+
+.stock-button.available {
+  background-color: #28a745;
+  color: white;
+}
+
+.stock-button.not-available {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Botón de actualizar */
+.submit-button {
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: none;
+  background-color: #2b2b2b;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.submit-button:hover:not(:disabled) {
+  background-color: #444;
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Botón eliminar */
+.remove-variant-btn {
+  background: transparent;
+  border: 2px solid #dc3545;
+  border-radius: 25px;
+  color: #dc3545;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.remove-variant-btn:hover:not(:disabled) {
+  background: #dc3545;
+  color: white;
+}
+
+.remove-variant-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Mensaje de error */
+.error-message {
+  color: #dc3545;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 12px;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .create-product-container {
+    padding: 1.5rem;
+  }
+
+  .form-section h2 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Header con botón de variantes */
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Botón de Variantes */
+.variant-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #2b2b2b;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.variant-button:hover:not(:disabled) {
+  background: #444;
+  transform: translateY(-2px);
+}
+
+.variant-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

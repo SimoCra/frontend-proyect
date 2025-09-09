@@ -1,0 +1,53 @@
+/* Estilos para el contenedor principal del footer */
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 128px;
+  background-color: #ddd; /* Gris claro como en la imagen */
+  padding: 40px 20px; /* Igual que home__header */
+  font-family: 'Arial', sans-serif;
+  font-size: 1.2rem;
+  color: #000;
+  height: auto; /* Deja que crezca según el contenido */
+}
+
+/* Contenedor del contenido para alinear los elementos */
+.footer-content {
+  display: flex;
+  justify-content: space-between; /* Coloca los elementos en extremos opuestos */
+  align-items: center; /* Centra los elementos verticalmente */
+  max-width: 1200px; /* Ancho máximo para mantener el contenido centrado en pantallas grandes */
+  margin: 0 auto; /* Centra el contenedor */
+  flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
+  gap: 15px; /* Espacio entre los elementos si se envuelven */
+}
+
+/* Estilos para el texto de copyright */
+.footer-copyright {
+  font-size: 14px;
+  color: #555555; /* Color de texto gris oscuro */
+  margin: 0; /* Elimina el margen por defecto del párrafo */
+  text-align: left; /* Alineación a la izquierda */
+}
+
+/* Estilos para el enlace de términos y condiciones */
+.footer-link {
+  font-size: 14px;
+  color: #333333; /* Color de texto negro */
+  text-decoration: underline; /* Subrayado como en la imagen */
+  white-space: nowrap; /* Evita que el enlace se rompa en varias líneas */
+}
+
+.footer-link:hover {
+  color: #000000; /* Color al pasar el mouse para dar retroalimentación */
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center;   /* Centra los elementos */
+    text-align: center;
+  }
+}

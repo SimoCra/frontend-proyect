@@ -1,0 +1,144 @@
+.checkout-summary-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+  font-family: 'Poppins', sans-serif;
+  color: #222;
+}
+
+/* 🔹 Título principal */
+.checkout-summary-container h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 2rem; /* más espacio */
+  text-align: center;
+  border-bottom: 2px solid #000;
+  padding-bottom: 0.5rem;
+}
+
+/* 🔹 Caja elegante para dirección */
+.shipping-address {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 1.8rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* 📍 Ícono */
+.shipping-address span[role="img"] {
+  font-size: 1.4rem;
+  margin-right: 0.4rem;
+}
+
+/* 🔹 Productos en carrito */
+.checkout-products {
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: #fafafa;
+}
+
+.checkout-product {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.checkout-product:last-child {
+  border-bottom: none;
+}
+
+.checkout-product img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-info h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.product-info p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* 🔹 Resumen de compra */
+.checkout-summary {
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 1.5rem;
+  background-color: #fafafa;
+}
+
+.summary-item,
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.6rem 0;
+}
+
+.summary-total {
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-top: 1px solid #ddd;
+  padding-top: 0.6rem;
+}
+
+/* 🔹 Botón de finalizar compra */
+.checkout-btn {
+  margin-top: 1.2rem;
+  width: 100%;
+  padding: 0.9rem;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.checkout-btn:hover:not(:disabled),
+.select-address-btn:hover {
+  background-color: #333;
+  transform: scale(1.02);
+}
+
+.checkout-btn:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+/* 🔹 Botón seleccionar dirección */
+.select-address-btn {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.3rem;
+  margin-top: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.select-address-btn:focus {
+  outline: 2px solid #000;
+}

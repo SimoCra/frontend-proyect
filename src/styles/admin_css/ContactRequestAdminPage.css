@@ -1,0 +1,29 @@
+.contact-requests-container {
+  padding: 2rem;
+}
+
+.contact-requests-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.contact-requests-container th,
+.contact-requests-container td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.contact-requests-container th {
+  background-color: #f4f4f4;
+}
+
+.contact-requests-container button {
+  margin-right: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+}

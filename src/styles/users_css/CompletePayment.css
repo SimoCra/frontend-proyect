@@ -1,0 +1,168 @@
+/* ==============================
+   ESTRUCTURA GENERAL
+============================== */
+.container, 
+.direcciones-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ==============================
+   TIPOGRAFÍA
+============================== */
+h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  display: block;
+  color: #444;
+}
+
+/* ==============================
+   FORMULARIOS E INPUTS
+============================== */
+form {
+  display: grid;
+  gap: 1rem;
+}
+
+input, 
+select, 
+textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+input:focus, 
+select:focus, 
+textarea:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+/* ==============================
+   BOTONES
+============================== */
+button {
+  background: #4a90e2;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #3b78c2;
+}
+
+/* Botón secundario */
+.acciones-direcciones button {
+  background: #777;
+}
+
+.acciones-direcciones button:hover {
+  background: #555;
+}
+
+/* ==============================
+   LISTA DE DIRECCIONES
+============================== */
+.direccion-item {
+  display: flex;
+  align-items: center;
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.direccion-item:hover {
+  background: #f8f8f8;
+}
+
+.direccion-item input {
+  margin-right: 0.6rem;
+}
+
+/* ==============================
+   MENSAJES
+============================== */
+.success {
+  color: #2d995b;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.errores {
+  background: #ffe0e0;
+  border: 1px solid #ffb3b3;
+  padding: 0.8rem;
+  border-radius: 6px;
+  color: #a00;
+  font-size: 0.9rem;
+  list-style: disc;
+  margin-top: 0.5rem;
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+@media (max-width: 768px) {
+  .container, 
+  .direcciones-container {
+    padding: 1rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  input, 
+  select, 
+  textarea {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .direccion-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .direccion-item input {
+    margin-bottom: 0.3rem;
+  }
+}

@@ -1,0 +1,154 @@
+/* Contenedor general */
+.uo-container {
+  max-width: 850px; /* 🔹 más ancho */
+  margin: 50px auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  position: relative;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+}
+
+/* Título */
+.uo-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-align: center;
+  color: #111;
+}
+
+/* Tabla */
+.uo-table-wrapper {
+  overflow-x: auto;
+}
+
+.uo-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  background: #fafafa;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.uo-table thead {
+  background: #111;
+  color: #fff;
+  text-align: left;
+}
+
+.uo-table th,
+.uo-table td {
+  padding: 14px 18px; /* 🔹 más espacio */
+  border-bottom: 1px solid #ddd;
+}
+
+.uo-table tbody tr:hover {
+  background: #f1f3f5; /* 🔹 hover más notorio */
+}
+
+/* ID */
+.uo-id {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Total */
+.uo-total {
+  font-weight: 700;
+  color: #000;
+  font-size: 17px;
+}
+
+/* Estados */
+.uo-status {
+  padding: 6px 12px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+  display: inline-block;
+  min-width: 100px;       /* 🔹 Tamaño consistente */
+  text-align: center;
+}
+
+/* Colores de estado */
+.uo-status-pendiente {
+  background-color: #ffe066;
+  color: #6d4c00;
+}
+
+.uo-status-enviado {
+  background-color: #74c0fc;
+  color: #003566;
+}
+
+.uo-status-entregado {
+  background-color: #8ce99a;
+  color: #064d1a;
+}
+
+.uo-status-unknown {
+  background-color: #e9ecef;
+  color: #495057;
+}
+
+/* Botón volver */
+.uo-back {
+  position: fixed; /* 🔹 fijo arriba a la izquierda */
+  top: 20px;
+  left: 20px;
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s ease;
+  z-index: 1000;
+}
+
+.uo-back:hover {
+  background: #333;
+}
+
+/* Mensajes */
+.uo-loading,
+.uo-error,
+.uo-empty {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .uo-container {
+    padding: 15px;
+    margin: 20px auto;
+  }
+
+  .uo-title {
+    font-size: 22px;
+  }
+
+  .uo-table th,
+  .uo-table td {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .uo-total {
+    font-size: 15px;
+  }
+
+  .uo-back {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}

@@ -1,0 +1,184 @@
+/* ============================================== */
+/* ===         ESTILOS DEL FOOTER         === */
+/* ============================================== */
+
+.footer-container {
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 20px 5%; /* Aumentamos padding vertical y usamos % para horizontal */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 277px; /* Espacio consistente entre columnas */
+  padding-bottom: 10px;
+  border-bottom: 1px solid #c7c7c7;
+}
+
+.footer-section {
+  flex: 1; /* Permite que las secciones crezcan */
+  min-width: 220px; /* Ancho mínimo para cada sección antes de que pasen a la siguiente línea */
+}
+
+.footer-logo {
+  max-width: 150px;
+  height: auto;
+  margin-bottom: 20px; /* Espacio debajo del logo */
+}
+
+.footer-help-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.footer-help-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-help-list li {
+  margin-bottom: 10px;
+}
+
+.footer-help-list a {
+  text-decoration: none;
+  color: inherit;
+  transition: text-decoration 0.3s;
+}
+
+.footer-help-list a:hover {
+  text-decoration: underline;
+}
+
+/* --- Redes Sociales (Corregido) --- */
+.footer-social {
+  display: flex;
+  gap: 15px; /* Gap reducido para mejor apariencia */
+  margin-top: 10px;
+  /* Eliminamos el posicionamiento relativo fijo */
+}
+
+.social-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #333;
+  color: #e0e0e0;
+  font-size: 20px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.social-link:hover {
+  background-color: #6d6a6a;
+  transform: scale(1.1);
+}
+
+/* --- Parte Inferior del Footer --- */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 25px;
+  gap: 20px;
+}
+
+.footer-bottom-info p {
+  margin: 4px 0;
+  font-size: 12px;
+  color: #555;
+}
+
+.location-text {
+  font-size: 14px !important;
+  color: #333 !important;
+  font-weight: bold;
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-bottom-links a {
+  font-size: 12px;
+  color: #555;
+  text-decoration: none;
+}
+
+.footer-bottom-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom-sic img {
+  max-width: 100px;
+  height: auto;
+}
+
+/* ============================================== */
+/* ===         ESTILOS RESPONSIVE         === */
+/* ============================================== */
+
+/* --- Vista para Tablets (hasta 992px) --- */
+@media (max-width: 992px) {
+  .footer-content {
+    gap: 30px; /* Reducimos el espacio entre columnas */
+  }
+}
+
+/* --- Vista para Móviles (hasta 768px) --- */
+@media (max-width: 768px) {
+  .footer-container {
+    padding: 30px 5%;
+  }
+
+  .footer-content,
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center; /* Centramos todo el contenido */
+    text-align: center;
+  }
+
+  .footer-section {
+    width: 100%; /* Cada sección ocupa el ancho completo */
+    max-width: 350px; /* Evita que se vea demasiado ancho en móviles horizontales */
+    min-width: unset; /* Reseteamos el min-width */
+  }
+
+  .footer-logo {
+    margin: 0 auto 20px auto; /* Centra el logo y añade espacio inferior */
+  }
+
+  .footer-social {
+    justify-content: center; /* Centra los íconos dentro de su contenedor */
+  }
+
+  /* Reordenamos los elementos de la parte inferior para una mejor jerarquía móvil */
+  .footer-bottom-info {
+    order: 3;
+    margin-top: 10px;
+  }
+  
+  .footer-bottom-links {
+    order: 2;
+    margin-bottom: 20px;
+  }
+
+  .footer-bottom-sic {
+    order: 1;
+    margin-bottom: 20px;
+  }
+}

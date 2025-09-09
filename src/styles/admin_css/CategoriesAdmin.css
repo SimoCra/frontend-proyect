@@ -1,0 +1,182 @@
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.categories-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.categories-title {
+  font-size: 26px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.categories-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.categories-input {
+  padding: 10px;
+  font-size: 16px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* ===== BOTONES ===== */
+.btn {
+  padding: 10px 16px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover { background-color: #333; }
+.btn:disabled { background-color: gray; cursor: not-allowed; }
+
+.btn-view {
+  flex: 1;
+  font-size: 15px;
+  padding: 10px;
+}
+
+/* ===== GRID DE CATEGORÍAS ===== */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.category-card {
+  background-color: #fff;
+  padding: 18px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.category-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* ===== MODAL ===== */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  width: 590px;
+  max-width: 90%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.modal-content h3 {
+  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* ===== FORMULARIO MODAL ===== */
+.modal-form input {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 12px;
+}
+
+/* ===== UPLOAD BOX ===== */
+.image-upload-box {
+  border: 2px dashed #bbb;
+  padding: 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+  background-color: #fafafa;
+}
+
+.image-upload-box.dragover {
+  background-color: #f0f0f0;
+}
+
+.upload-icon {
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.image-upload-box p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.image-upload-box small {
+  font-size: 12px;
+  color: #888;
+}
+
+/* ===== PREVIEW DE IMAGEN ===== */
+.category-image-preview {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 12px auto;
+  display: block;
+  border: 1px solid #ddd;
+}
+
+/* ===== ACCIONES MODAL ===== */
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.modal-actions .btn {
+  flex: 1;
+  padding: 10px 0;
+  font-size: 15px;
+  border-radius: 6px;
+}

@@ -1,0 +1,95 @@
+/* ====== Panel General ====== */
+.users-panel {
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* ====== Título ====== */
+.users-panel h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+/* ====== Barra de búsqueda ====== */
+.users-panel__search {
+  padding: 12px 16px;
+  width: 100%;
+  max-width: 450px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  margin: 0 auto 40px auto; /* centrada */
+  font-size: 15px;
+  display: block;
+}
+
+/* ====== Grid de usuarios ====== */
+.users-panel__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  justify-content: center;
+}
+
+/* ====== Card de usuario ====== */
+.users-panel__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #ffffff;
+  padding: 25px 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  width: 100%;
+  max-width: 240px;
+  min-height: 240px;
+}
+
+.users-panel__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* Imagen dentro de la card */
+.users-panel__image {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #000000;
+  margin-bottom: 15px;
+}
+
+/* Info del usuario */
+.users-panel__info {
+  flex: 1;
+  margin-bottom: 15px;
+}
+
+.users-panel__info p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Botón eliminar */
+.users-panel__delete-btn {
+  background: #000000;
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.users-panel__delete-btn:hover {
+  background: #e63946;
+  transform: scale(1.05);
+}

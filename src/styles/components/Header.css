@@ -1,0 +1,298 @@
+/* ============================================== */
+/* ===         ESTILOS GENERALES DEL HEADER     === */
+/* ============================================== */
+
+.home__header {
+  display: flex;
+  flex-wrap: wrap; /* Habilitado por defecto para el responsive */
+  align-items: center;
+  justify-content: space-between;
+  background-color: #e0e0e0;
+  padding: 20px 45px;
+  position: relative;
+  z-index: 1000;
+}
+
+/* === SECCIÓN IZQUIERDA: Logo === */
+.home__logo {
+  height: 60px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+/* === SECCIÓN CENTRAL: Búsqueda y Navegación === */
+.home__center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  margin: 0 100px;
+}
+
+/* === SearchBar === */
+.searchbar-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* Igual que el input de búsqueda original */
+}
+
+.searchbar-input {
+  width: 100%;
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  background: #fff;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.searchbar-input:focus {
+  box-shadow: 0 0 6px rgba(25, 118, 210, 0.4); /* efecto al enfocar */
+}
+
+/* === Resultados desplegables === */
+.searchbar-results {
+  position: absolute;
+  top: calc(100% + 8px); /* justo debajo del input */
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  z-index: 1500; /* por encima del header */
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Items de la lista */
+.searchbar-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.searchbar-item:hover {
+  background: #f5f5f5;
+}
+
+.searchbar-item img {
+  width: 42px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.searchbar-item span {
+  font-size: 15px;
+  color: #333;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Sin resultados */
+.searchbar-noresults {
+  padding: 12px;
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+}
+
+/* === Categorías debajo del buscador === */
+.home__categorias {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 12px; /* separamos del buscador */
+}
+
+.home__categorias a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.home__categorias a:hover {
+  color: #000;
+  font-weight: 700;
+}
+
+/* === SECCIÓN DERECHA: Íconos y Acciones === */
+.home__icons {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.home__icon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.home__icon:hover {
+  transform: scale(1.1);
+}
+
+.home__cart-container,
+.home__profile-container,
+.home__notifications-container {
+  position: relative;
+}
+
+.home__cart-badge,
+.home__notifications-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #e53935;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  user-select: none;
+}
+
+/* === Componentes de Acciones (Login, Perfil) === */
+.home__login-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.home__login-btn {
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: #333;
+  color: #fff;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.home__login-btn:hover {
+  background: #000;
+}
+
+/* === Paneles Desplegables (Perfil y Notificaciones) === */
+.home__profile-panel,
+.home__notifications-panel {
+  position: absolute;
+  top: 150%;
+  right: 0;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  z-index: 1001;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.home__profile-panel {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.home__notifications-panel {
+  width: 320px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.home__notifications-panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.notification-item { padding: 12px 5px; border-bottom: 1px solid #eee; }
+.notification-item:last-child { border-bottom: none; }
+.notification-item.unread { background-color: #f0f8ff; }
+.notification-item strong { display: block; font-weight: 600; }
+.notification-item p { margin: 5px 0; font-size: 0.9rem; }
+.notification-item small { color: #666; font-size: 0.75rem; }
+
+/* === Contenido del Panel de Perfil === */
+.home__profile-header { display: flex; align-items: center; gap: 12px; }
+.home__profile-avatar { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; }
+.home__profile-info h3 { font-size: 14px; margin: 0; color: #333; }
+.home__profile-actions { display: flex; flex-direction: column; gap: 10px; }
+.home__edit-btn, .home__logout-btn { text-decoration: none; padding: 9px 14px; border-radius: 5px; color: #fff; text-align: center; font-size: 14px; transition: background 0.3s ease; cursor: pointer; border: none; }
+.home__edit-btn { background: #1976d2; }
+.home__edit-btn:hover { background: #125aa5; }
+.home__logout-btn { background: #e53935; }
+.home__logout-btn:hover { background: #b71c1c; }
+
+/* === Menú Móvil (Oculto por defecto) === */
+.home__hamburger { display: none; font-size: 28px; cursor: pointer; user-select: none; }
+.home__categorias-mobile { display: none; }
+
+/* === Animación Global === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================== */
+/* ===         ESTILOS RESPONSIVE         === */
+/* ============================================== */
+
+/* === Vista para Tablets (hasta 1024px) === */
+@media (max-width: 1024px) {
+  .home__header { padding: 10px 25px; }
+  .home__center { margin: 0 40px; }
+  .home__categorias { gap: 30px; }
+  .home__icons { gap: 25px; }
+}
+
+/* === Vista para Móviles (hasta 768px) === */
+@media (max-width: 768px) {
+  .home__header { padding: 15px; }
+  .home__logo { order: 1; height: 50px; }
+  .home__icons { order: 2; gap: 20px; }
+  .home__center { order: 3; flex-basis: 100%; margin: 15px 0 0 0; }
+  .searchbar-container { max-width: 100%; }
+  .home__categorias { display: none; }
+  .home__hamburger { display: block; }
+
+  .home__categorias-mobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    order: 4;
+    background-color: #f0f0f0;
+    margin-top: 10px;
+    border-radius: 8px;
+    padding: 10px 0;
+    animation: fadeIn 0.3s ease-out;
+  }
+  .home__categorias-mobile a { text-decoration: none; color: #333; padding: 12px 20px; text-align: center; border-bottom: 1px solid #ddd; }
+  .home__categorias-mobile a:last-child { border-bottom: none; }
+
+  .home__profile-panel,
+  .home__notifications-panel {
+    top: 120%;
+  }
+}
+
+/* === Ajustes finos para pantallas muy pequeñas (hasta 480px) === */
+@media (max-width: 480px) {
+  .home__logo { height: 45px; }
+  .home__icons { gap: 15px; }
+  .home__icon { width: 24px; height: 24px; }
+  .home__login-buttons { gap: 8px; }
+  .home__login-btn { padding: 6px 12px; font-size: 14px; }
+}

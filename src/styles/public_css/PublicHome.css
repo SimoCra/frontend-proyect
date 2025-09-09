@@ -1,0 +1,362 @@
+/* === General === */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: #000;
+}
+
+.home__dashboard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* === Hero === */
+.home__hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2c2c2c;
+  position: relative;
+  color: #fff;
+}
+
+.home__hero-arrow {
+  background: #d9d9d9;
+  border: none;
+  font-size: 24px;
+  border-radius: 6px;
+  width: 40px;
+  height: 40px;
+}
+
+.home__hero-text {
+  flex: 1;
+  padding-left: 100px;
+}
+
+.home__hero-title {
+  font-size: 40px;
+  margin-top: -30px;
+  font-weight: 600;
+}
+
+.home__hero-btn {
+  background-color: #fff;
+  color: #000;
+  padding: 12px 30px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.home__hero-img {
+  max-height: 300px;
+  margin: 0;
+  border-radius: 150px 0 0 150px;
+  object-fit: cover;
+}
+
+/* === Productos === */
+.home__section {
+  padding: 30px 20px;
+}
+
+.home__section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home__section-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.home__section-link {
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.home__products-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+ gap: 40px;
+ margin-top: 20px;
+}
+
+.home__product-card {
+ background-color: #fff;
+ border-radius: 10px;
+ box-shadow: 0 0 5px rgba(0,0,0,0.1);
+ padding: 10px;
+ text-align: center;
+}
+
+.home__product-img {
+ height: 100px;
+ object-fit: cover;
+ margin-bottom: 10px;
+}
+
+.home__product-name {
+ font-size: 14px;
+ margin: 0;
+}
+
+.home__product-description {
+ font-size: 12px;
+ color: #666;
+ margin: 5px 0;
+}
+
+.home__product-price {
+ font-weight: bold;
+ margin: 5px 0;
+}
+
+.home__product-btn {
+ background-color: #555;
+ color: #fff;
+ padding: 5px 10px;
+ border-radius: 6px;
+ text-decoration: none;
+ font-size: 12px;
+}
+
+.btn-ver-mas {
+  display: inline-block;
+  margin-top: 1rem;
+  background-color: #000; /* Negro */
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-ver-mas:hover {
+  background-color: #333; /* Gris oscuro al pasar el cursor */
+}
+
+
+/* === Banner intermedio === */
+.home__mid-banner {
+  background-image: url('/img/imagen.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  padding: 55px 20px;
+  text-align: center;
+  font-size: 19px;
+}
+
+.home__mid-banner-link {
+  display: block;
+  margin-top: 10px;
+  text-decoration: underline;
+  color: #fff;
+}
+
+/* === Categorías === */
+.home__categories {
+  display: flex;
+  justify-content: center; /* Centra las tarjetas en el contenedor */
+  gap: 30px; /* Espacio entre las tarjetas */
+  padding: 40px 20px;
+  background-color: #fff; /* Fondo blanco para la sección */
+  flex-wrap: wrap; /* Permite que las tarjetas se ajusten en pantallas pequeñas */
+}
+
+.home__category-card {
+  display: flex; /* ¡Clave! Activa Flexbox para alinear contenido */
+  justify-content: space-between; /* Empuja el texto a la izq y las imágenes a la der */
+  align-items: center; /* Centra verticalmente el contenido */
+  background: #f0f0f0; /* Fondo gris claro como en la imagen */
+  padding: 30px;
+  width: 45%;
+  min-width: 400px; /* Ancho mínimo para evitar que se comprima demasiado */
+  border-radius: 8px; /* Bordes ligeramente redondeados */
+  box-sizing: border-box;
+}
+
+/* Contenedor del texto a la izquierda */
+.home__category-text {
+  flex-grow: 1; /* Permite que el contenedor de texto ocupe el espacio disponible */
+}
+
+.home__category-title {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+  color: #333;
+}
+
+.home__category-highlight {
+  font-size: 48px; /* Hacemos el texto más grande y llamativo */
+  font-weight: 700;
+  margin: 5px 0;
+  line-height: 1;
+}
+
+.home__category-subtext {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Contenedor de las imágenes a la derecha */
+.home__category-images {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Espacio entre las dos imágenes */
+  margin-left: 20px; /* Separa las imágenes del texto */
+}
+
+.home__category-img-main {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.home__category-img-secondary {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* === Envío Gratis === */
+.home__shipping {
+  text-align: center;
+  padding: 15px 20px;
+  margin:50px 0 50px;
+  background-color: #e0e0e0;
+}
+
+.home__shipping-title {
+  font-size: 27px;
+  font-weight: bold;
+}
+
+.home__shipping-subtitle {
+  font-size: 18px;
+  color: #555;
+}
+
+/* === Footer === */
+.home__footer {
+  background-color: #e5e5e5;
+  padding: 20px;
+  font-size: 12px;
+}
+
+.home__footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.home__footer-logo span {
+  font-size: 10px;
+  display: block;
+  font-weight: 300;
+}
+
+.home__footer-help ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.home__footer-help li {
+  margin-bottom: 5px;
+}
+
+.home__footer-social a {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.home__footer-bottom {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 10px;
+  color: #666;
+}
+
+
+.home__cart-container {
+  position: relative;
+  display: inline-block;
+}
+
+.home__cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* === Responsive para Categorías === */
+
+/* Estilos para tablets y móviles (cuando la pantalla es de 900px o menos) */
+@media (max-width: 900px) {
+  .home__categories {
+    flex-direction: column; /* Cambia la dirección del flex para apilar las tarjetas */
+    gap: 20px; /* Añade un espacio entre las tarjetas apiladas */
+  }
+
+  .home__category-card {
+    width: 90%; /* La tarjeta ocupa casi todo el ancho */
+    margin: 0 auto; /* Centra la tarjeta */
+    min-width: unset; /* Resetea el ancho mínimo para que no cause problemas */
+    flex-direction: column; /* Apila el texto y las imágenes verticalmente DENTRO de la tarjeta */
+    gap: 25px; /* Espacio entre el bloque de texto y el de imágenes */
+  }
+
+  .home__category-text {
+    text-align: center; /* Centramos el texto para una mejor apariencia en móvil */
+  }
+
+  .home__category-images {
+    margin-left: 0; /* Quitamos el margen que las separaba del texto en la vista de escritorio */
+    justify-content: center; /* Centramos las imágenes en su contenedor */
+  }
+
+  .home__category-highlight {
+    font-size: 40px; /* Reducimos un poco el tamaño de la fuente grande para que quepa mejor */
+  }
+}
+
+/* Ajustes adicionales para móviles muy pequeños (480px o menos) */
+@media (max-width: 480px) {
+  .home__category-card {
+    width: 100%; /* Ocupa todo el ancho en pantallas muy chicas */
+    padding: 25px 15px; /* Ajustamos el padding interno */
+  }
+
+  .home__category-images {
+    /* Opcional: si las imágenes aún se ven muy grandes, puedes apilarlas */
+    /* flex-direction: column; */
+  }
+
+  .home__category-img-main {
+    width: 130px;
+    height: 130px;
+  }
+  
+  .home__category-img-secondary {
+    width: 80px;
+    height: 80px;
+  }
+}

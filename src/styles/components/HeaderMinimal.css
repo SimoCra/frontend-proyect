@@ -1,0 +1,55 @@
+/* src/styles/components/HeaderMinimal.css */
+
+.header-minimal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ddd; /* Gris claro como en la imagen */
+  padding: 20px 45px; /* Igual que home__header */
+  font-family: 'Arial', sans-serif;
+  font-size: 1.2rem;
+  color: #000;
+  height: auto; /* Deja que crezca según el contenido */
+}
+
+/* Logo del lado izquierdo */
+.header-minimal__logo img {
+  height: 60px; /* Igual que .home__logo */
+  object-fit: contain;
+  cursor: pointer;
+}
+
+/* Texto del centro */
+.header-minimal__text {
+  text-align: center;
+  flex: 1;
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+
+/* Acentuar el "100%" */
+.header-minimal__text strong {
+  font-weight: bold;
+}
+
+/* Ícono de seguridad */
+.header-minimal__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive opcional si deseas que se vea bien en móvil */
+@media (max-width: 768px) {
+  .header-minimal {
+    padding: 15px;
+  }
+
+  .header-minimal__text {
+    font-size: 1rem;
+  }
+
+  .header-minimal__logo img {
+    height: 50px;
+  }
+}

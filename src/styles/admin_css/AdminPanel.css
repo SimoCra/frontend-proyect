@@ -1,0 +1,131 @@
+/* === Contenedor General === */
+.admin-panel-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f7f7f7;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+}
+
+/* === Sidebar === */
+.admin-sidebar {
+  background: #000000;
+  color: #ffffff;
+  width: 260px;
+  transition: width 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.25);
+}
+
+.admin-sidebar.collapsed {
+  width: 80px;
+}
+
+/* === Botón toggle === */
+.toggle-button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px 18px;
+  margin-bottom: 15px;
+  transition: transform 0.2s, color 0.2s;
+}
+.toggle-button:hover {
+  transform: scale(1.15);
+  color: #1abc9c;
+}
+
+/* === Perfil === */
+.admin-sidebar-profile {
+  text-align: center;
+  margin-bottom: 30px;
+  transition: opacity 0.3s;
+}
+
+.admin-sidebar-profile img {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+.admin-sidebar-profile h2 {
+  font-size: 15px;
+  margin-top: 12px;
+  font-weight: 500;
+  color: #f0f0f0;
+}
+
+/* === Navegación === */
+.admin-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 12px;
+}
+
+.admin-sidebar-nav button {
+  background: none;
+  border: none;
+  color: #ecf0f1;
+  text-align: left;
+  padding: 12px 18px;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.2s;
+}
+
+.admin-sidebar-nav button:hover {
+  background: #1a1a1a;
+  color: #1abc9c;
+  transform: translateX(5px);
+}
+
+.admin-sidebar-nav .icon {
+  font-size: 18px;
+}
+
+/* === Botón de logout === */
+.admin-sidebar-logout {
+  padding: 15px;
+}
+
+.admin-sidebar-logout button {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  width: 100%;
+  text-align: left;
+  padding: 12px 18px;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.2s;
+}
+
+.admin-sidebar-logout button:hover {
+  background: #c0392b;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.admin-main {
+  flex: 1; /* Ocupa el espacio restante */
+  padding: 30px;
+  background-color: #f7f7f7;
+  overflow-y: auto;
+}

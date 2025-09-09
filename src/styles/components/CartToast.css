@@ -1,0 +1,59 @@
+.cart-toast {
+  position: fixed;
+  top: 20px;
+  right: -350px; /* empieza oculto */
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  width: 300px;
+  z-index: 9999;
+  animation: slideIn 0.4s forwards;
+}
+
+.cart-toast img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.cart-toast-info p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.cart-toast-info strong {
+  font-size: 1rem;
+  color: #333;
+}
+
+.cart-toast-info button {
+  margin-top: 0.3rem;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cart-toast-info button:hover {
+  background: #3b78c2;
+}
+
+/* Animación */
+@keyframes slideIn {
+  to {
+    right: 20px; /* posición final */
+  }
+}
+
+@keyframes slideOut {
+  to {
+    right: -350px;
+  }
+}

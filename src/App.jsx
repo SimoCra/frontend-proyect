@@ -10,7 +10,7 @@ import DeleteUser from './pages/admin/DeleteUsers';
 import ProductDetail from './pages/public/ProductDetail';
 import Cart from './pages/users/Cart';
 import AdminDashboard from './pages/admin/AdminDashboard';
-import ResetPassword from './pages/public/ResetPassword';
+import ResetPassword from './pages/public/ResetPassword'
 import Productos from './pages/public/Products';
 import AddressForm from './pages/users/CompletePayment';
 import CheckoutSummary from './pages/users/CheckoutSummary';

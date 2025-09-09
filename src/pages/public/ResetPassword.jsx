@@ -1,29 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import Swal from 'sweetalert2';
-import 'sweetalert2/dist/sweetalert2.min.css';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+// ======================= IMPORTS ======================= //
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
 
+import { useAuth } from "../../context/AuthContext";
+
+// ======================= COMPONENT ======================= //
 const ResetPassword = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const token = decodeURIComponent(location.pathname.replace('/reset-password/', ''));
   const { verifyTokenPassword, resetPassword } = useAuth();
 
+  // Extraer token desde la URL
+  const token = decodeURIComponent(
+    location.pathname.replace("/reset-password/", "")
+  );
+
+  // Estados de validación
   const [tokenValid, setTokenValid] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  // Estados del formulario
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [loadingAction, setLoadingAction] = useState(false);
 
+  // ======================= VALIDAR TOKEN ======================= //
   useEffect(() => {
     if (!token) {
       setTokenValid(false);
-      setErrorMessage('El enlace no contiene un token válido.');
+      setErrorMessage("El enlace no contiene un token válido.");
       setLoading(false);
       return;
     }
@@ -31,70 +41,53 @@ const ResetPassword = () => {
     verifyTokenPassword(token)
       .then(() => {
         setTokenValid(true);
-        setErrorMessage('');
+        setErrorMessage("");
       })
       .catch((err) => {
         setTokenValid(false);
-        setErrorMessage(err.message || 'El enlace es inválido o ha expirado.');
+        setErrorMessage(err.message || "El enlace es inválido o ha expirado.");
       })
       .finally(() => setLoading(false));
   }, [token, verifyTokenPassword]);
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
-  setError('');
-  setSuccess('');
+  // ======================= HANDLERS ======================= //
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setSuccess("");
 
-  if (!password || !confirmPassword) {
-    setError('Por favor completa ambos campos');
-    return;
-  }
-  if (password !== confirmPassword) {
-    setError('Las contraseñas no coinciden');
-    return;
-  }
+    if (!password || !confirmPassword) {
+      setError("Por favor completa ambos campos");
+      return;
+    }
 
-  try {
-    // Mostrar SweetAlert con spinner
-    Swal.fire({
-      title: 'Actualizando contraseña...',
-      allowOutsideClick: false,
-      didOpen: () => {
-        Swal.showLoading();
-      }
-    });
+    if (password !== confirmPassword) {
+      setError("Las contraseñas no coinciden");
+      return;
+    }
 
-    // Llamada a la API
-    await resetPassword(token, password, confirmPassword);
+    try {
+      setLoadingAction(true); // inicia loader
 
-    // Mostrar mensaje de éxito sin botones
-    Swal.fire({
-      icon: 'success',
-      title: '¡Contraseña actualizada!',
-      text: 'Serás redirigido al login en unos segundos...',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true
-    });
+      // Llamada a la API
+      await resetPassword(token, password, confirmPassword);
 
-    setPassword('');
-    setConfirmPassword('');
+      // Éxito
+      setSuccess("¡Contraseña actualizada! Serás redirigido al login...");
+      setPassword("");
+      setConfirmPassword("");
 
-    // Redirigir automáticamente después de 3 segundos
-    setTimeout(() => {
-      navigate('/login');
-    }, 3000);
-
-  } catch (err) {
-    Swal.close();
-    setError(err.message || 'Error al actualizar la contraseña');
-  }
-};
-
-  const handleSolicitarNuevo = () => {
-    navigate('/login');
+      setTimeout(() => navigate("/login"), 3000);
+    } catch (err) {
+      setError(err.message || "Error al actualizar la contraseña");
+    } finally {
+      setLoadingAction(false); // detiene loader
+    }
   };
 
+  const handleSolicitarNuevo = () => navigate("/login");
+
+  // ======================= RENDER ======================= //
   if (loading) return <p>Cargando...</p>;
 
   if (!tokenValid) {
@@ -110,39 +103,44 @@ const ResetPassword = () => {
   return (
     <div>
       <h2>Cambiar contraseña</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {success && <p style={{ color: 'green' }}>{success}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      {success && <p style={{ color: "green" }}>{success}</p>}
 
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Nueva contraseña:</label><br />
+          <label>Nueva contraseña:</label>
+          <br />
           <input
             type="password"
             value={password}
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
+            disabled={loadingAction}
           />
         </div>
+
         <div>
-          <label>Confirmar contraseña:</label><br />
+          <label>Confirmar contraseña:</label>
+          <br />
           <input
             type="password"
             value={confirmPassword}
-            onChange={e => setConfirmPassword(e.target.value)}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            disabled={loadingAction}
           />
         </div>
 
         <button type="submit" disabled={loadingAction}>
-          {loadingAction ? 'Cargando...' : 'Actualizar contraseña'}
+          {loadingAction ? "Cargando..." : "Actualizar contraseña"}
         </button>
       </form>
 
       {loadingAction && (
-        <div style={{ marginTop: '1rem' }}>
+        <div style={{ marginTop: "1rem" }}>
           <svg
             width="40"
             height="40"
             viewBox="0 0 50 50"
-            style={{ display: 'block', margin: 'auto' }}
+            style={{ display: "block", margin: "auto" }}
           >
             <circle
               cx="25"

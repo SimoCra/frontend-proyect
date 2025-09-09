@@ -4,12 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-  "dev": "vite",
-  "build": "vite build",
-  "lint": "eslint .",
-  "preview": "vite preview",
-  "start": "serve -s dist"
-},
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "start": "serve -s dist"
+  },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^7.0.0",
     "@fortawesome/free-solid-svg-icons": "^7.0.0",
@@ -23,6 +23,7 @@
     "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^7.5.0",
     "recharts": "^3.0.2",
+    "serve": "^14.2.5",
     "sweetalert2": "^11.23.0",
     "sweetalert2-react-content": "^5.1.0"
   },

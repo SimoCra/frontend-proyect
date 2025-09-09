@@ -1,7 +1,8 @@
-import axios from "axios";
+// src/services/ordersService.js
+import { api } from "./api";
 import { getFingerprint } from "./fingerPrint";
 
-const API_URL = "http://localhost:5000/api/orders";
+const API_URL = "/api/orders";
 
 // ========================= DIRECCIONES ========================= //
 
@@ -9,7 +10,7 @@ const API_URL = "http://localhost:5000/api/orders";
 export const getUserAddresses = async () => {
   const fp = await getFingerprint();
   try {
-    const res = await axios.get(`${API_URL}/addresses`, {
+    const res = await api.get(`${API_URL}/addresses`, {
       headers: { "x-client-fingerprint": fp },
       withCredentials: true,
     });
@@ -24,13 +25,12 @@ export const getUserAddresses = async () => {
 export const registerAddress = async (addressData) => {
   const fp = await getFingerprint();
   try {
-    const res = await axios.post(`${API_URL}/addresses`, addressData, {
+    const res = await api.post(`${API_URL}/addresses`, addressData, {
       headers: { "x-client-fingerprint": fp },
       withCredentials: true,
     });
     return res.data;
   } catch (error) {
-    console.log(error.response?.data?.message);
     const msg =
       error.response?.data?.message || "Error al registrar la dirección";
     throw new Error(msg);
@@ -47,7 +47,7 @@ export const checkoutOrder = async (addressId) => {
 
   const fp = await getFingerprint();
   try {
-    const res = await axios.post(
+    const res = await api.post(
       `${API_URL}/checkout`,
       { addressId },
       {
@@ -70,7 +70,7 @@ export const checkoutOrder = async (addressId) => {
 export const getMyOrders = async () => {
   const fp = await getFingerprint();
   try {
-    const res = await axios.get(`${API_URL}/my-orders`, {
+    const res = await api.get(`${API_URL}/my-orders`, {
       headers: { "x-client-fingerprint": fp },
       withCredentials: true,
     });
@@ -86,11 +86,11 @@ export const getMyOrders = async () => {
 export const getAllOrders = async () => {
   const fp = await getFingerprint();
   try {
-    const res = await axios.get(`${API_URL}/all-orders`, {
+    const res = await api.get(`${API_URL}/all-orders`, {
       headers: { "x-client-fingerprint": fp },
       withCredentials: true,
     });
-    return res.data; 
+    return res.data;
   } catch (error) {
     const msg =
       error.response?.data?.message || "Error al obtener todos los pedidos";
@@ -100,19 +100,14 @@ export const getAllOrders = async () => {
 
 // ========================= ACTUALIZAR ESTADO DEL PEDIDO (ADMIN) ========================= //
 
-
 export const updateOrderStatus = async (orderId, newStatus, userId) => {
-
-  console.log(`Order: ${orderId}`)
-  console.log(`Status: ${newStatus}`)
-  console.log(`UserId: ${userId}`)
   if (!orderId || !newStatus) {
     throw new Error("Debe proporcionar el ID del pedido y el nuevo estado.");
   }
 
   const fp = await getFingerprint();
   try {
-    const res = await axios.put(
+    const res = await api.put(
       `${API_URL}/orders/status`,
       { orderId, newStatus, userId },
       {
@@ -123,7 +118,8 @@ export const updateOrderStatus = async (orderId, newStatus, userId) => {
     return res.data;
   } catch (error) {
     const msg =
-      error.response?.data?.message || "Error al actualizar el estado del pedido";
+      error.response?.data?.message ||
+      "Error al actualizar el estado del pedido";
     throw new Error(msg);
   }
 };

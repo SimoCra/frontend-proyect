@@ -1,12 +1,17 @@
-import axios from "axios";
-import { getFingerprint } from './fingerPrint';
- const fp = await getFingerprint();
+import { api } from "./api";
+import { getFingerprint } from "./fingerPrint";
+
+const BASE_URL = "/user";
+
+// ========================= ADMIN ========================= //
+
+// 📌 Eliminar usuario por ID (solo admin)
 export const deleteUserById = async (userId) => {
+  const fp = await getFingerprint();
   try {
-    const res = await axios.delete(
-      `http://localhost:5000/api/user/admin/users/${userId}`,
-      {  headers: {'x-client-fingerprint': fp  }, withCredentials: true}
-    );
+    const res = await api.delete(`${BASE_URL}/admin/users/${userId}`, {
+      headers: { "x-client-fingerprint": fp },
+    });
     return res.data.message;
   } catch (error) {
     const msg = error.response?.data?.message || "Error al eliminar usuario";
@@ -14,34 +19,36 @@ export const deleteUserById = async (userId) => {
   }
 };
 
-export const editUser = async (id, email, name, phone) => {
+// 📌 Obtener todos los usuarios (solo admin, con paginación)
+export const fetchAllUsers = async (page = 1, limit = 25) => {
+  const fp = await getFingerprint();
   try {
-    const res = await axios.put(
-      `http://localhost:5000/api/user/${id}`,
-      { email, name, phone },
-      {  headers: {'x-client-fingerprint': fp  }, withCredentials: true}
-    );
-    return res.data.message;
+    const res = await api.get(`${BASE_URL}/admin`, {
+      headers: { "x-client-fingerprint": fp },
+      params: { page, limit },
+    });
+    return res.data; // { users, page, limit, total }
   } catch (error) {
-    const msg = error.response?.data?.message || "Error al actualizar usuario";
+    const msg = error.response?.data?.message || "Error al obtener usuarios";
     throw new Error(msg);
   }
 };
 
-export const fetchAllUsers = async (page = 1, limit = 25) => {
-  try {
-    const res = await axios.get(
-      `http://localhost:5000/api/user/admin?page=${page}&limit=${limit}`,
-      {
-        headers: { 'x-client-fingerprint': fp },
-        withCredentials: true,
-      }
-    );
+// ========================= USUARIOS ========================= //
 
-    // 👇 devuelve toda la respuesta (incluye page, limit, users)
-    return res.data;
+// 📌 Editar usuario (propio o admin)
+export const editUser = async (id, email, name, phone) => {
+  const fp = await getFingerprint();
+  try {
+    const res = await api.put(
+      `${BASE_URL}/${id}`,
+      { email, name, phone },
+      { headers: { "x-client-fingerprint": fp } }
+    );
+    return res.data.message;
   } catch (error) {
-    const msg = error.response?.data?.message || "Error al obtener usuarios";
+    const msg =
+      error.response?.data?.message || "Error al actualizar usuario";
     throw new Error(msg);
   }
 };

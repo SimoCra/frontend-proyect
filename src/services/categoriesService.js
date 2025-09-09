@@ -1,10 +1,9 @@
 // src/services/categoriesService.js
-import axios from "axios";
+import { api } from "./api";
 import { getFingerprint } from "./fingerPrint";
 
-const API_URL = "http://localhost:5000/api/admin/categories";
-const PRODUCTS_API_URL = "http://localhost:5000/api/admin/categories/product";
-
+const CATEGORIES_URL = "/admin/categories";
+const PRODUCTS_URL = "/admin/categories/product";
 
 /**
  * Configuración común de headers con fingerprint
@@ -13,7 +12,6 @@ const getConfig = async () => {
   const fp = await getFingerprint();
   return {
     headers: { "x-client-fingerprint": fp },
-    withCredentials: true,
   };
 };
 
@@ -21,27 +19,22 @@ const getConfig = async () => {
  * Categorías
  */
 
-/**
- * Obtener todas las categorías con paginación
- */
+// Obtener todas las categorías con paginación
 export const fetchAllCategories = async (limit = 20, offset = 0) => {
   try {
     const config = await getConfig();
-    const res = await axios.get(
-      `${API_URL}?limit=${limit}&offset=${offset}`,
+    const res = await api.get(
+      `${CATEGORIES_URL}?limit=${limit}&offset=${offset}`,
       config
     );
     return res.data.data; // backend devuelve { success, data }
   } catch (error) {
-    const msg =
-      error.response?.data?.message || "Error al obtener categorías";
+    const msg = error.response?.data?.message || "Error al obtener categorías";
     throw new Error(msg);
   }
 };
 
-/**
- * Crear una categoría (code + name + imagen opcional)
- */
+// Crear una categoría (code + name + imagen opcional)
 export const addCategory = async (code, name, imageFile) => {
   try {
     const config = await getConfig();
@@ -50,7 +43,7 @@ export const addCategory = async (code, name, imageFile) => {
     formData.append("name", name);
     if (imageFile) formData.append("image", imageFile);
 
-    const res = await axios.post(API_URL, formData, {
+    const res = await api.post(CATEGORIES_URL, formData, {
       ...config,
       headers: {
         ...config.headers,
@@ -60,15 +53,12 @@ export const addCategory = async (code, name, imageFile) => {
 
     return res.data.data;
   } catch (error) {
-    const msg =
-      error.response?.data?.message || "Error al crear categoría";
+    const msg = error.response?.data?.message || "Error al crear categoría";
     throw new Error(msg);
   }
 };
 
-/**
- * Actualizar categoría (code + name + imagen opcional)
- */
+// Actualizar categoría (code + name + imagen opcional)
 export const updateCategory = async (id, code, name, imageFile) => {
   try {
     const config = await getConfig();
@@ -77,7 +67,7 @@ export const updateCategory = async (id, code, name, imageFile) => {
     formData.append("name", name);
     if (imageFile) formData.append("image", imageFile);
 
-    const res = await axios.put(`${API_URL}/${id}`, formData, {
+    const res = await api.put(`${CATEGORIES_URL}/${id}`, formData, {
       ...config,
       headers: {
         ...config.headers,
@@ -87,39 +77,32 @@ export const updateCategory = async (id, code, name, imageFile) => {
 
     return res.data.data;
   } catch (error) {
-    const msg =
-      error.response?.data?.message || "Error al actualizar categoría";
+    const msg = error.response?.data?.message || "Error al actualizar categoría";
     throw new Error(msg);
   }
 };
 
-/**
- * Eliminar categoría
- */
+// Eliminar categoría
 export const deleteCategory = async (id) => {
   try {
     const config = await getConfig();
-    const res = await axios.delete(`${API_URL}/${id}`, config);
+    const res = await api.delete(`${CATEGORIES_URL}/${id}`, config);
     return res.data.message;
   } catch (error) {
-    const msg =
-      error.response?.data?.message || "Error al eliminar categoría";
+    const msg = error.response?.data?.message || "Error al eliminar categoría";
     throw new Error(msg);
   }
 };
 
-/**
- * Obtener productos de una categoría
- */
+// Obtener productos de una categoría
 export const fetchProductsByCategory = async (id) => {
   try {
     const config = await getConfig();
-    const res = await axios.get(`${API_URL}/${id}/products`, config);
+    const res = await api.get(`${CATEGORIES_URL}/${id}/products`, config);
     return res.data.data; // backend devuelve { success, data }
   } catch (error) {
     const msg =
-      error.response?.data?.message ||
-      "Error al obtener productos de la categoría";
+      error.response?.data?.message || "Error al obtener productos de la categoría";
     throw new Error(msg);
   }
 };
@@ -128,15 +111,13 @@ export const fetchProductsByCategory = async (id) => {
  * Productos
  */
 
-/**
- * Obtener un producto por ID (con variantes)
- */
+// Obtener un producto por ID (con variantes)
 export const getProductByIdService = async (id) => {
   if (!id) throw new Error("El ID del producto es requerido");
 
   try {
     const config = await getConfig();
-    const res = await axios.get(`${PRODUCTS_API_URL}/${id}`, config);
+    const res = await api.get(`${PRODUCTS_URL}/${id}`, config);
     return res.data.data;
   } catch (error) {
     const msg = error.response?.data?.message || "No se pudo obtener el producto";
@@ -144,56 +125,46 @@ export const getProductByIdService = async (id) => {
   }
 };
 
-
+// Actualizar producto
 export const updateProduct = async (id, productData) => {
   try {
     const config = await getConfig();
-    console.log(productData);
 
-    const res = await axios.put(
-      `${PRODUCTS_API_URL}/${id}`,
-      productData, // se envía directamente como JSON
-      config
-    );
-
+    const res = await api.put(`${PRODUCTS_URL}/${id}`, productData, config);
     return res.data; // tu backend ya devuelve el producto actualizado
   } catch (error) {
-    const msg =
-      error.response?.data?.message || "Error al actualizar producto";
+    const msg = error.response?.data?.message || "Error al actualizar producto";
     throw new Error(msg);
   }
 };
 
+// Actualizar variante de producto
 export const updateProductVariantService = async (productId, variantData) => {
   if (!productId) throw new Error("El ID del producto es requerido");
   if (!variantData?.variantId) throw new Error("El ID de la variante es requerido");
 
   try {
-    // Creamos FormData
     const formData = new FormData();
-    formData.append('variantId', variantData.variantId);
-    formData.append('color', variantData.color);
-    formData.append('style', variantData.style);
-    formData.append('price', variantData.price);
+    formData.append("variantId", variantData.variantId);
+    formData.append("color", variantData.color);
+    formData.append("style", variantData.style);
+    formData.append("price", variantData.price);
 
-    // Solo agregamos el archivo si existe
     if (variantData.imageFile) {
-      formData.append('imageFile', variantData.imageFile);
+      formData.append("imageFile", variantData.imageFile);
     }
 
-    // Obtenemos configuración (headers, token, etc.)
     const config = await getConfig();
 
-    // IMPORTANTE: multipart/form-data
-    const response = await axios.put(
-      `${PRODUCTS_API_URL}/variants/${productId}`,
+    const response = await api.put(
+      `${PRODUCTS_URL}/variants/${productId}`,
       formData,
       {
         ...config,
         headers: {
           ...config.headers,
-          'Content-Type': 'multipart/form-data'
-        }
+          "Content-Type": "multipart/form-data",
+        },
       }
     );
 
@@ -204,16 +175,13 @@ export const updateProductVariantService = async (productId, variantData) => {
   }
 };
 
-
-/**
- * Eliminar producto por ID
- */
+// Eliminar producto por ID
 export const deleteProductService = async (id) => {
   if (!id) throw new Error("El ID del producto es requerido");
 
   try {
     const config = await getConfig();
-    const res = await axios.delete(`${PRODUCTS_API_URL}/${id}`, config);
+    const res = await api.delete(`${PRODUCTS_URL}/${id}`, config);
     return res.data.message;
   } catch (error) {
     const msg = error.response?.data?.message || "No se pudo eliminar el producto";

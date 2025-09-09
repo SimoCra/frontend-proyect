@@ -1,13 +1,14 @@
-import axios from "axios";
+// src/services/notificationsService.js
+import { api } from "./api";
 import { getFingerprint } from "./fingerPrint";
 
-const API_URL = "http://localhost:5000/api/notifications";
+const API_URL = "/api/notifications";
 
 // ✅ Obtener últimas 10 notificaciones (globales y propias)
 export const getNotifications = async (userId) => {
   const fp = await getFingerprint();
   try {
-    const res = await axios.get(`${API_URL}/${userId}`, {
+    const res = await api.get(`${API_URL}/${userId}`, {
       headers: { "x-client-fingerprint": fp },
       withCredentials: true,
     });
@@ -23,7 +24,7 @@ export const getNotifications = async (userId) => {
 export const deleteNotification = async (notificationId) => {
   const fp = await getFingerprint();
   try {
-    const res = await axios.delete(`${API_URL}/${notificationId}`, {
+    const res = await api.delete(`${API_URL}/${notificationId}`, {
       headers: { "x-client-fingerprint": fp },
       withCredentials: true,
     });
@@ -39,7 +40,7 @@ export const deleteNotification = async (notificationId) => {
 export const markNotificationsAsReadByUser = async (userId) => {
   const fp = await getFingerprint();
   try {
-    const res = await axios.put(
+    const res = await api.put(
       `${API_URL}/mark-read/${userId}`,
       {},
       {
@@ -60,7 +61,7 @@ export const markNotificationsAsReadByUser = async (userId) => {
 export const createGlobalNotification = async (title, message, type) => {
   const fp = await getFingerprint();
   try {
-    const res = await axios.post(
+    const res = await api.post(
       `${API_URL}/add-global-notification`,
       { title, message, type },
       {
@@ -81,7 +82,7 @@ export const createGlobalNotification = async (title, message, type) => {
 export const markGlobalNotificationAsRead = async (notificationId) => {
   const fp = await getFingerprint();
   try {
-    const res = await axios.put(
+    const res = await api.put(
       `${API_URL}/global/${notificationId}/read`,
       {},
       {
